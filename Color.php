@@ -50,25 +50,23 @@ class Color
         return $this->blue;
     }
 
-    public function equals()
+    public function equals( Color $objectcolors)
     {
+
     }
 
     public static function random()
     {
-//self !!!!
+return new Color(rand(0,255),rand(0,255),rand(0,255));
     }
 
-    public function mix(Color $objectRed, Color $objectGreen, Color $objectBlue)
+    public function mix(Color $objectcolor)
     {
-        $new_Red = ($this->red + $objectRed->red) / 2;
-        $new_Green = ($this->green + $objectGreen->green) / 2;
-        $new_Blue = ($this->blue + $objectBlue->blue) / 2;
-        return new Color($new_Red, $new_Green, $new_Green);
+        return new Color(($this->red + $objectcolor->red) / 2, ($this->green + $objectcolor->green) / 2, ($this->blue + $objectcolor->blue) / 2);
     }
 }
 
 
-$color1 = new Color(123, 3, 145);
-$color2 = new Color(150, 133, 8);
-$color3 = new Color(111, 143, 155);
+$color1 = new Color(124, 6, 148);
+$color2 = new Color(150, 134, 8);
+$color3 = new Color(110, 144, 156);
