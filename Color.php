@@ -52,7 +52,7 @@ class Color
 
     public function equals( Color $objectcolors)
     {
-
+return $this == $objectcolors;
     }
 
     public static function random()
@@ -70,3 +70,4 @@ return new Color(rand(0,255),rand(0,255),rand(0,255));
 $color1 = new Color(124, 6, 148);
 $color2 = new Color(150, 134, 8);
 $color3 = new Color(110, 144, 156);
+$color4 = new Color(124, 6, 148);
