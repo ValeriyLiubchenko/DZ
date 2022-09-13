@@ -3,9 +3,9 @@
 
 class Color
 {
-    private float $red;
-    private float $green;
-    private float $blue;
+    private int $red;
+    private int $green;
+    private int $blue;
 
     public function __construct($red, $green, $blue)
     {
@@ -52,7 +52,19 @@ class Color
 
     public function equals()
     {
+    }
 
+    public static function random()
+    {
+//self !!!!
+    }
+
+    public function mix(Color $objectRed, Color $objectGreen, Color $objectBlue)
+    {
+        $new_Red = ($this->red + $objectRed->red) / 2;
+        $new_Green = ($this->green + $objectGreen->green) / 2;
+        $new_Blue = ($this->blue + $objectBlue->blue) / 2;
+        return new Color($new_Red, $new_Green, $new_Green);
     }
 }
 
@@ -60,4 +72,3 @@ class Color
 $color1 = new Color(123, 3, 145);
 $color2 = new Color(150, 133, 8);
 $color3 = new Color(111, 143, 155);
-var_dump($color1);
