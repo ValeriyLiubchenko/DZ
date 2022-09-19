@@ -38,7 +38,7 @@ class Color
     private function setGreen($valueGreen)
     {
         $this->validation($valueGreen);
-            $this->green = $valueGreen;
+        $this->green = $valueGreen;
     }
 
     public function getGreen()
@@ -49,7 +49,7 @@ class Color
     private function setBlue($valueBlue)
     {
         $this->validation($valueBlue);
-            $this->blue = $valueBlue;
+        $this->blue = $valueBlue;
     }
 
     public function getBlue()
@@ -74,7 +74,7 @@ class Color
 }
 
 
-$color1 = new Color('sdfd', 11, 148);
+$color1 = new Color(122, 11, 148);
 $color2 = new Color(150, 134, 8);
 $color3 = new Color(110, 144, 156);
 $color4 = new Color(124, 6, 148);
