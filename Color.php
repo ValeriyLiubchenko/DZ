@@ -14,11 +14,20 @@ class Color
         $this->setBlue($blue);
     }
 
+    public function validation($value)
+    {
+        if (!is_int($value)) {
+            throw new InvalidArgumentException('RGB параметри можуть бути лише цілими числами');
+        }
+        if ($value < 0 || $value > 255) {
+            throw new InvalidArgumentException('Невірний діапазон параметрів RGB');
+        }
+    }
+
     private function setRed($valueRed)
     {
-        if ($valueRed >= 0 && $valueRed <= 255) {
-            $this->red = $valueRed;
-        } else echo "Sry It's not true";
+        $this->validation($valueRed);
+        $this->red = $valueRed;
     }
 
     public function getRed()
@@ -28,9 +37,8 @@ class Color
 
     private function setGreen($valueGreen)
     {
-        if ($valueGreen >= 0 && $valueGreen <= 255) {
+        $this->validation($valueGreen);
             $this->green = $valueGreen;
-        } else echo "Sry It's not true";
     }
 
     public function getGreen()
@@ -40,9 +48,8 @@ class Color
 
     private function setBlue($valueBlue)
     {
-        if ($valueBlue >= 0 && $valueBlue <= 255) {
+        $this->validation($valueBlue);
             $this->blue = $valueBlue;
-        } else echo "Sry It's not true";
     }
 
     public function getBlue()
@@ -50,14 +57,14 @@ class Color
         return $this->blue;
     }
 
-    public function equals( Color $objectcolors)
+    public function equals(Color $objectcolors)
     {
-return $this == $objectcolors;
+        return $this == $objectcolors;
     }
 
     public static function random()
     {
-return new Color(rand(0,255),rand(0,255),rand(0,255));
+        return new Color(rand(0, 255), rand(0, 255), rand(0, 255));
     }
 
     public function mix(Color $objectcolor)
@@ -67,7 +74,7 @@ return new Color(rand(0,255),rand(0,255),rand(0,255));
 }
 
 
-$color1 = new Color(124, 6, 148);
+$color1 = new Color('sdfd', 11, 148);
 $color2 = new Color(150, 134, 8);
 $color3 = new Color(110, 144, 156);
 $color4 = new Color(124, 6, 148);
