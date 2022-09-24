@@ -1,2 +1,10 @@
 {
+  "autoload": {
+    "psr-4": {
+      "Hillel\\": "src"
+    }
+  },
+  "require": {
+    "guzzlehttp/guzzle": "^7.0"
+  }
 }
