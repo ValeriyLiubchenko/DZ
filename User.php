@@ -2,25 +2,53 @@
 
 abstract class Model
 {
-
-    public static function create()
+    public static function find($id)
     {
+        $tablename = strtolower(static::class);
+        $sql = 'SELECT * FROM ' . $tablename . ' WHERE id = :id';
+        return $sql;
+    }
+
+    public function create()
+    {
+        $tablename = strtolower(static::class);
+        $data = get_object_vars($this);
+        $property = array_keys($data);
+        $property2 = array_map(function ($item) {
+            return ':' . $item;
+        }, $property);
+        $sql = 'INSERT ' . $tablename . ' (' . implode(',', $property) . ') VALUES (' . implode(',', $property2) . ')';
+        return $sql;
+    }
+
+    public function update()
+    {
+        $tablename = strtolower(static::class);
+        $data = get_object_vars($this);
+        $property = array_keys($data);
+        $property2 = array_map(function ($item) {
+            return ':' . $item;
+        }, $property);
+        $sql = 'UPDATE ' . $tablename . ' (' . implode(',', $property) . ') VALUES (' . implode(',', $property2) . ')
+        WHERE id = : '.$this->id.' ';
+        return $sql;
 
     }
 
-    public static function read()
+    public function delete()
     {
-
+        $tablename = strtolower(static::class);
+        $data = get_object_vars($this);
+        $sql = 'DELETE * FROM ' . $tablename . ' WHERE id = :id';
+        return $sql;
     }
-
-    public static function update()
+    public function save()
     {
-
-    }
-
-    public static function delete()
-    {
-
+        if(self::find()==true)
+        {
+            $this->update();
+        }
+        else $this->create();
     }
 }
 

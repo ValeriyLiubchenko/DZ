@@ -1,8 +1,9 @@
 <?php
 
+namespace Hillel;
 class Currency
 {
-    private $isoCode;
+    private string $isoCode;
 
     public function __construct($isoCode)
     {
@@ -11,6 +12,7 @@ class Currency
 
     private function SetIsoCode($valueIsoCode)
     {
+        $this->validate($valueIsoCode);
         $this->isoCode = $valueIsoCode;
     }
 
@@ -22,10 +24,17 @@ class Currency
     private function validate($value)
     {
         $currency = [
-
+            'USD',
+            'UAH',
+            'EUR',
+            'GBP',
+            'CHF',
+            'JPY',
+            'CNY',
+            'ILS'
         ];
         if (!in_array($value, $currency)) {
-            throw new InvalidArgumentException('Невалідне значення');
+            throw new \InvalidArgumentException('INVALID Currency');
         }
     }
 

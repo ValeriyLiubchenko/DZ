@@ -78,3 +78,4 @@ $color1 = new Color(122, 11, 148);
 $color2 = new Color(150, 134, 8);
 $color3 = new Color(110, 144, 156);
 $color4 = new Color(124, 6, 148);
+$color1->equals($color2);
