@@ -3,22 +3,22 @@
 abstract class Model
 {
 
-    public function create()
+    public static function create()
     {
 
     }
 
-    public function read()
+    public static function read()
     {
 
     }
 
-    public function update()
+    public static function update()
     {
 
     }
 
-    public function delete()
+    public static function delete()
     {
 
     }
