@@ -1,6 +1,5 @@
 <?php
 
-namespace Hillel;
 class Currency
 {
     private string $isoCode;

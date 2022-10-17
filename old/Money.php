@@ -1,6 +1,5 @@
 <?php
 
-namespace Hillel;
 class Money
 {
     private int $amount;
