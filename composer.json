@@ -6,7 +6,7 @@
   },
   "require": {
     "guzzlehttp/guzzle": "^7.0",
-    "illuminate/database": "^9.35",
-    "illuminate/events": "^9.35"
+    "illuminate/database": "^9.42",
+    "illuminate/events": "^9.42"
   }
 }
