@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tag extends Model
 {
-    public $timestamps = false;
+    public function post()
+    {
+        return $this->belongsToMany(Post::Class , 'post_tag')->withTimestamps();
+    }
 
 }
