@@ -2,7 +2,7 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../config/database.php';
 
-
+use Hillel\Models\Category;
 use Hillel\Models\Post;
 use Hillel\Models\Tag;
 
@@ -32,23 +32,23 @@ use Hillel\Models\Tag;
 //$category->title = 'Fifth Category';
 //$category->slug = 'SMT';
 //$category->save();
-
-//Апдейт категорії
-
+//
+////Апдейт категорії
+//
 //$category = Category::find(1);
 //$category->title = 'New Title';
 //print_r($category->title);
 //$category->save();
-
-//Видалення категорій
-
+//
+////Видалення категорій
+//
 //$category = Category::find(3);
 //print_r($category->id);
 //$category->delete();
 //$category->save();
-
-//Створення постів та присвоєння їм довільних категорій
-
+//
+////Створення постів та присвоєння їм довільних категорій
+//
 //$category = Category::find(1);
 //$post = new Post();
 //$post->title = 'Post 1 title';
@@ -128,87 +128,87 @@ use Hillel\Models\Tag;
 //$post->body = 'BODY10';
 //$post->category_id = $category->id;
 //$post->save();
-
+//
 //$category = Category::find(2);
 //$post = new Post();
-//$post->title = 'Post 100 title';$
+//$post->title = 'Post 100 title';
+//$
 //$post->slug = 'SMT100';
 //$post->body = 'BODY100';
 //$category->posts()->save($post);
-
-// Апдейт поста та зміна категорії
-
+//
+//// Апдейт поста та зміна категорії
+//
 //$post = Post::find(1);
 //$post->title = 'New Title';
 //print_r($post->title);
 //$categoty = Category::find(4);
 //$categoty->posts()->save($post);
 //print_r($post->category_id);
-
-//Видалення посту
-
+//
+////Видалення посту
+//
 //$post = Post::find(2);
 //$post->delete();
 //$post->save();
-
-// Створення тегів
-
+//
+//// Створення тегів
+//
 //$tag = new Tag();
 //$tag->title = '1 tag';
 //$tag->slug = '1 slug';
 //$tag->save();
-
+//
 //$tag = new Tag();
 //$tag->title = '2 tag';
 //$tag->slug = '2 slug';
 //$tag->save();
-
+//
 //$tag = new Tag();
 //$tag->title = '3 tag';
 //$tag->slug = '3 slug';
 //$tag->save();
-
+//
 //$tag = new Tag();
 //$tag->title = '4 tag';
 //$tag->slug = '4 slug';
 //$tag->save();
-
+//
 //$tag = new Tag();
 //$tag->title = '5 tag';
 //$tag->slug = '5 slug';
 //$tag->save();
-
+//
 //$tag = new Tag();
 //$tag->title = '6 tag';
 //$tag->slug = '6 slug';
 //$tag->save();
-
+//
 //$tag = new Tag();
 //$tag->title = '7 tag';
 //$tag->slug = '7 slug';
 //$tag->save();
-
+//
 //$tag = new Tag();
 //$tag->title = '8 tag';
 //$tag->slug = '8 slug';
 //$tag->save();
-
+//
 //$tag = new Tag();
 //$tag->title = '9 tag';
 //$tag->slug = '9 slug';
 //$tag->save();
-
+//
 //$tag = new Tag();
 //$tag->title = '10 tag';
 //$tag->slug = '10 slug';
 //$tag->save();
-
-
-// Прикріплення випадкових тегів
-
+//
+//
+//// Прикріплення випадкових тегів
+//
 //$posts = Post::all();
 //foreach ($posts as $post) {
-//    echo $post->id . '<br>';
 //    foreach ($post->tags() as $tag) {
 //        $tag = Tag::find(rand(1, 10));
 //        $post->tags()->save($tag);
