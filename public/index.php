@@ -211,10 +211,11 @@ use Hillel\Models\Tag;
 //    echo $post->id . '<br>';
 //    foreach ($post->tags() as $tag) {
 //        $tag = Tag::find(rand(1, 10));
-//        echo $tag->id;
+//        $post->tags()->save($tag);
 //        $tag = Tag::find(rand(1, 10));
-//        echo $tag->id;
+//        $post->tags()->save($tag);
 //        $tag = Tag::find(rand(1, 10));
-//        echo $tag->id. '<br>';
+//        $post->tags()->save($tag);
+//
 //    }
 //}
