@@ -6,10 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    public $timestamps = false;
 
-    public function orders()
+    public function category()
     {
-        return $this->hasMany(Order::Class);
+        return $this->belongsTo(Category::Class);
     }
+//    public function tag()
+//    {
+//        return$this->belongsToMany(Tag::Class , 'post_tag')->withTimestamps();
+//    }
 }
