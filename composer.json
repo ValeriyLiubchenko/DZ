@@ -8,6 +8,7 @@
     "guzzlehttp/guzzle": "^7.5",
     "illuminate/database": "^9.42",
     "illuminate/events": "^9.42",
-    "illuminate/view": "^9.43"
+    "illuminate/view": "^9.43",
+    "illuminate/routing": "^9.43"
   }
 }
