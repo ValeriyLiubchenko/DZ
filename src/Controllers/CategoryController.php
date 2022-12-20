@@ -11,13 +11,13 @@ class CategoryController
     public function index()
     {
         $categories = Category::all();
-        return view('pages/categories/list-categories', compact( 'categories'));
+        return view('pages/categories/list-categories', compact('categories'));
     }
 
     public function show($id)
     {
         $category = Category::find($id);
-        return view('pages/categories/show', compact( 'category'));
+        return view('pages/categories/show', compact('category'));
     }
 
     public function create()
@@ -40,7 +40,7 @@ class CategoryController
     public function edit($id)
     {
         $category = Category::find($id);
-        return view('pages/categories/form-edit', compact( 'category'));
+        return view('pages/categories/form-edit', compact('category'));
     }
 
     public function update()

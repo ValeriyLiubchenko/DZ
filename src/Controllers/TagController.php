@@ -11,13 +11,13 @@ class TagController
     public function index()
     {
         $tags = Tag::all();
-        return view('pages/tags/list-tags', compact( 'tags'));
+        return view('pages/tags/list-tags', compact('tags'));
     }
 
     public function show($id)
     {
         $tag = Tag::find($id);
-        return view('pages/tags/show', compact( 'tag'));
+        return view('pages/tags/show', compact('tag'));
     }
 
     public function create()
@@ -40,7 +40,7 @@ class TagController
     public function edit($id)
     {
         $tag = Tag::find($id);
-        return view('pages/tags/form-edit', compact( 'tag'));
+        return view('pages/tags/form-edit', compact('tag'));
     }
 
     public function update()

@@ -8,7 +8,7 @@ class PageController
 
     public function index()
     {
-      echo 'Hi';
+        echo 'Hi';
     }
 }
 
