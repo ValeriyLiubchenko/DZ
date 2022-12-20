@@ -7,7 +7,7 @@
 'link'=>'/',
 'name'=>'Home',
         ],[
-'link'=>'/tags/list-tags.php',
+'link'=>'/tag',
 'name'=>'Tags list',
         ]
     ]

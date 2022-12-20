@@ -7,7 +7,7 @@
 'link'=>'/',
 'name'=>'Home',
         ],[
-'link'=>'/categories/list-categories.php',
+'link'=>'/category',
 'name'=>'Categories list',
         ]
     ]

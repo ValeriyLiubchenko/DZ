@@ -5,10 +5,10 @@
     @include('particial.breadcrumbs',[
     'links'=>[
         [
-'link'=>'/categories/list-categories.php',
+'link'=>'/category',
 'name'=>'Categories list',
         ],[
-'link'=>'/tags/list-tags.php',
+'link'=>'/tag',
 'name'=>'Tags list',
         ]
     ]
