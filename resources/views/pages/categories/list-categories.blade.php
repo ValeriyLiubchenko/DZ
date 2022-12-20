@@ -37,8 +37,9 @@
                     <td>{{$category->created_at}}</td>
                     <td>{{$category->updated_at}}</td>
                     <td>
-                        <a href="/categories/update-category.php?id={{$category->id}}"> Update </a>
-                        <a href="/categories/delete-category.php?id={{$category->id}}"> Delete </a>
+                        <a href="/category/{{$category->id}}/edit"> Update </a>
+                        <a href="/category/{{$category->id}}/delete"> Delete </a>
+                        <a href="/category/{{$category->id}}/show"> Show </a>
                     </td>
                 </tr>
             @endforeach

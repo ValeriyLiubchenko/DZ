@@ -15,7 +15,7 @@
 @endsection
 
 @section('content')
-    <a href="/tags/create-tag.php" class="btn btn-success">CREATE TAG</a>
+    <a href="/tag/create" class="btn btn-success">CREATE TAG</a>
     @if(!empty($tags))
         <table class="table table-hover">
             <thead>
@@ -37,8 +37,9 @@
                     <td>{{$tag->created_at}}</td>
                     <td>{{$tag->updated_at}}</td>
                     <td>
-                        <a href="/tags/update-tag.php?id={{$tag->id}}"> Update </a>
-                        <a href="/tags/delete-tag.php?id={{$tag->id}}"> Delete </a>
+                        <a href="/tag/{{$tag->id}}/edit"> Update </a>
+                        <a href="/tag/{{$tag->id}}/delete"> Delete </a>
+                        <a href="/tag/{{$tag->id}}/show"> Show </a>
                     </td>
                 </tr>
             @endforeach

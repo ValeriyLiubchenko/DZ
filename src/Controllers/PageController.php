@@ -6,9 +6,9 @@ namespace Hillel\Controllers;
 class PageController
 {
 
-    public function contact()
+    public function index()
     {
-      echo 'contact get';
+      echo 'Hi';
     }
 }
 

@@ -10,22 +10,20 @@ class CategoryController
 
     public function index()
     {
-        $title = 'list-categories';
         $categories = Category::all();
-        return view('pages/categories/list-categories', compact('title', 'categories'));
+        return view('pages/categories/list-categories', compact( 'categories'));
     }
 
-    public function show()
+    public function show($id)
     {
-
+        $category = Category::find($id);
+        return view('pages/categories/show', compact( 'category'));
     }
 
     public function create()
     {
         $category = new Category();
-        return view('pages/categories/create-category', [
-            'title' => 'create-category'
-        ]);
+        return view('pages/categories/create-category');
 
     }
 
@@ -42,18 +40,24 @@ class CategoryController
     public function edit($id)
     {
         $category = Category::find($id);
-        return view('pages/categories/create-category', [
-            'title' => 'create-category'
-        ]);
+        return view('pages/categories/form-edit', compact( 'category'));
     }
 
     public function update()
     {
-
+        $request = request();
+        $category = Category::find($request->input('id'));
+        $category->title = $request->input('title');
+        $category->slug = $request->input('slug');
+        $category->save();
+        return new RedirectResponse('/category');
     }
 
-    public function destroy()
+    public function destroy($id)
     {
-
+        $request = request();
+        $category = Category::find($id);
+        $category->delete();
+        return new RedirectResponse('/category');
     }
 }
