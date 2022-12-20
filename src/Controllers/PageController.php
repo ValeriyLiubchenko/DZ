@@ -8,7 +8,7 @@ class PageController
 
     public function contact()
     {
-      echo 'contact';
+      echo 'contact get';
     }
 }
 

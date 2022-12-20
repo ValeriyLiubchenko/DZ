@@ -15,7 +15,7 @@
 @endsection
 
 @section('content')
-    <a href="/categories/create-category.php" class="btn btn-success">CREATE category</a>
+    <a href="/category/create" class="btn btn-success">CREATE category</a>
     @if(!empty($categories))
         <table class="table table-hover">
             <thead>
