@@ -3,16 +3,16 @@
 namespace Hillel\Controllers;
 
 use Hillel\Models\Category;
+use Hillel\Models\Post;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Validation\Rule;
 
-class CategoryController
+class PostController
 {
 
     public function index()
     {
-        $categories = Category::all();
-        return view('pages/categories/list-categories', compact('categories'));
+        $posts = Post::all();
+        return view('pages/categories/list-categories', compact('posts'));
     }
 
     public function show($id)
@@ -23,8 +23,9 @@ class CategoryController
 
     public function create()
     {
+        // dd($_SESSION['errors']);
         $category = new Category();
-        return view('pages/categories/create-category', compact('category'));
+        return view('pages/categories/create-category',compact('category'));
 
     }
 
@@ -33,11 +34,13 @@ class CategoryController
 
         $data = request()->all();
 
-        $validator = validator()->make($data, [
-            'title' => ['required', 'min:3', 'unique:categories,title'],
-            'slug' => ['required', 'min:3']
+        $validator = validator()->make($data,[
+            'title'=>['required','min:3'],
+            'slug'=>['required','min:3'],
+            'category_id'=>['exists:categories,id ']
         ]);
-        if ($validator->fails()) {
+        if ($validator->fails())
+        {
             $_SESSION['errors'] = $validator->errors()->toArray();
             $_SESSION['data'] = $data;
             return new RedirectResponse($_SERVER['HTTP_REFERER']);
@@ -59,31 +62,11 @@ class CategoryController
 
     public function update()
     {
-
-        $data = request()->all();
-        $category = Category::find($data['id']);
-        $category->title = $data['title'];
-        $category->slug = $data['slug'];
-
-        $validator = validator()->make($data, [
-            'title' => [
-                'required',
-                'min:3',
-                Rule::unique('categories','title')->ignore($category->id)
-            ],
-            'slug' => [
-                'required',
-                'min:3']
-        ]);
-        if ($validator->fails()) {
-            $_SESSION['errors'] = $validator->errors()->toArray();
-            $_SESSION['data'] = $data;
-            return new RedirectResponse($_SERVER['HTTP_REFERER']);
-        }
-
+        $request = request();
+        $category = Category::find($request->input('id'));
+        $category->title = $request->input('title');
+        $category->slug = $request->input('slug');
         $category->save();
-
-        $_SESSION['success'] = 'Запис успішно оновлено';
         return new RedirectResponse('/category');
     }
 

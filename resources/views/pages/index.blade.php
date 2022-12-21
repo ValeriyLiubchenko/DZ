@@ -14,6 +14,3 @@
     ]
 ])
 @endsection
-
-@section('content')
-@endsection

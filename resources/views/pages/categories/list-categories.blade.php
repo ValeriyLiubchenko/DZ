@@ -15,6 +15,15 @@
 @endsection
 
 @section('content')
+    @isset($_SESSION['success'])
+            <div class="alert alert-success" role="alert">
+                {{$_SESSION['success']}}
+            </div>
+            @php
+                unset($_SESSION['success']);
+            @endphp
+    @endisset
+
     <a href="/category/create" class="btn btn-success">CREATE category</a>
     @if(!empty($categories))
         <table class="table table-hover">
