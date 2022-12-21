@@ -40,7 +40,7 @@ class CategoryController
     public function edit($id)
     {
         $category = Category::find($id);
-        return view('pages/categories/form-edit', compact('category'));
+        return view('pages/categories/update-category', compact('category'));
     }
 
     public function update()

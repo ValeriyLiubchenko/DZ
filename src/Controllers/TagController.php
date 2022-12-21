@@ -40,7 +40,7 @@ class TagController
     public function edit($id)
     {
         $tag = Tag::find($id);
-        return view('pages/tags/form-edit', compact('tag'));
+        return view('pages/tags/update-tag', compact('tag'));
     }
 
     public function update()
