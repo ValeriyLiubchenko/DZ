@@ -4,7 +4,7 @@
     <h1>{{ $category->title }}</h1>
     <ul>
         <li>
-            Price: {{ $category->slug }}
+            Slug: {{ $category->slug }}
             created: {{ $category->created_at }}
             update: {{ $category->update_at }}
         </li>
