@@ -15,9 +15,8 @@ require_once __DIR__ . '/../config/router.php';
 
 
 /**
- * @var Illuminate\Http\Request  $request
+ * @var Illuminate\Http\Request $request
  */
-
 
 
 $responce = $router->dispatch($request);
@@ -27,3 +26,6 @@ echo $responce->getContent();
 /** @var $blade */
 
 echo $blade->make('pages/index')->render();
+
+
+
