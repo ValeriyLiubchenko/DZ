@@ -11,6 +11,7 @@
     "illuminate/view": "^9.43",
     "illuminate/routing": "^9.43",
     "illuminate/validation": "^9.45",
-    "illuminate/translation": "^9.45"
+    "illuminate/translation": "^9.45",
+    "vlucas/phpdotenv": "^5.5"
   }
 }

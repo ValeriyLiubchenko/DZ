@@ -1,31 +1,18 @@
 @extends('pages.layout')
 
-@section('breadcrumbs')
-    @include('particial.breadcrumbs',[
-    'links'=>[
-        [
-'link'=>'/',
-'name'=>'Home',
-        ],[
-'link'=>'/tag',
-'name'=>'Tags list',
-        ]
-    ]
-])
-@endsection
+
 
 @section('content')
     @isset($_SESSION['success'])
-            <div class="alert alert-success" role="alert">
-                {{$_SESSION['success']}}
-            </div>
-            @php
-                unset($_SESSION['success']);
-            @endphp
+        <div class="alert alert-success" role="alert">
+            {{$_SESSION['success']}}
+        </div>
+        @php
+            unset($_SESSION['success']);
+        @endphp
     @endisset
 
-    <a href="/category/create" class="btn btn-success">CREATE category</a>
-    <a href="/category/trash" class="btn btn-info">Trash</a>
+    <a href="/category/" class="btn btn-info">List</a>
     @if(!empty($categories))
         <table class="table table-hover">
             <thead>
@@ -47,9 +34,9 @@
                     <td>{{$category->created_at}}</td>
                     <td>{{$category->updated_at}}</td>
                     <td>
-                        <a href="/category/{{$category->id}}/edit"> Update </a>
-                        <a href="/category/{{$category->id}}/delete"> Delete </a>
-                        <a href="/category/{{$category->id}}/show"> Show </a>
+                        <a href="/category/{{$category->id}}/restore"> Restore </a>
+                        <a href="/category/{{$category->id}}/force-delete"> Delete </a>
+
                     </td>
                 </tr>
             @endforeach

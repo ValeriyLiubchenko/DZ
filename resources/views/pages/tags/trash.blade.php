@@ -1,18 +1,5 @@
 @extends('pages.layout')
 
-@section('breadcrumbs')
-    @include('particial.breadcrumbs',[
-    'links'=>[
-        [
-'link'=>'/',
-'name'=>'Home',
-        ],[
-'link'=>'/tag',
-'name'=>'Tags list',
-        ]
-    ]
-])
-@endsection
 
 @section('content')
     @isset($_SESSION['success'])
@@ -23,8 +10,6 @@
             unset($_SESSION['success']);
         @endphp
     @endisset
-
-    <a href="/tag/create" class="btn btn-success">CREATE tag</a>
     <a href="/tag/trash" class="btn btn-info">Trash</a>
     @if(!empty($tags))
         <table class="table table-hover">
@@ -47,9 +32,8 @@
                     <td>{{$tag->created_at}}</td>
                     <td>{{$tag->updated_at}}</td>
                     <td>
-                        <a href="/tag/{{$tag->id}}/edit"> Update </a>
-                        <a href="/tag/{{$tag->id}}/delete"> Delete </a>
-                        <a href="/tag/{{$tag->id}}/show"> Show </a>
+                        <a href="/tag/{{$tag->id}}/restore"> restore </a>
+                        <a href="/tag/{{$tag->id}}/force-delete"> Delete </a>
                     </td>
                 </tr>
             @endforeach

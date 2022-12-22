@@ -16,11 +16,25 @@ class TagController
         $tags = Tag::all();
         return view('pages/tags/list-tags', compact('tags'));
     }
+    public function trash()
+    {
+        $tags = Tag::onlyTrashed()->get();
+        return view('pages/tags/trash', compact('tags'));
+    }
 
     public function show($id)
     {
         $tag = Tag::find($id);
         return view('pages/tags/show', compact('tag'));
+    }
+    public function restore($id)
+    {
+
+        $request = request();
+        $tag = Tag::withTrashed($id)
+            ->where('id', $id)
+            ->restore();
+        return new RedirectResponse('/tag');
     }
 
     public function create()
@@ -94,6 +108,13 @@ class TagController
         $request = request();
         $tag = Tag::find($id);
         $tag->delete();
+        return new RedirectResponse('/tag');
+    }
+    public function forceDelete($id)
+    {
+        $tag = Tag::withTrashed($id)
+            ->where('id', $id)
+            ->forceDelete();
         return new RedirectResponse('/tag');
     }
 }

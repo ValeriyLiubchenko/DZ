@@ -9,8 +9,6 @@
     @php
         unset($_SESSION['success']);
     @endphp
-    <a href="/post/create" class="btn btn-primary">Add Post</a>
-    <a href="/post/trash" class="btn btn-info">Trash</a>
     <table class="table">
         <thead>
         <tr>
@@ -35,9 +33,8 @@
                 <td>{{ $post->created_at }}</td>
                 <td>{{ $post->udpdated_at }}</td>
                 <td>
-                    <a href="/post/{{ $post->id }}/edit">Update</a>
-                    <a href="/post/{{ $post->id }}/delete">Delete</a>
-                    <a href="/post/{{ $post->id }}/show">Show</a>
+                    <a href="/post/{{ $post->id }}/restore">Restore</a>
+                    <a href="/post/{{ $post->id }}/force-delete">Delete</a>
                 </td>
             </tr>
         @empty

@@ -15,10 +15,26 @@ class CategoryController
         return view('pages/categories/list-categories', compact('categories'));
     }
 
+    public function trash()
+    {
+        $categories = Category::onlyTrashed()->get();
+        return view('pages/categories/trash', compact('categories'));
+    }
+
     public function show($id)
     {
         $category = Category::find($id);
         return view('pages/categories/show', compact('category'));
+    }
+
+    public function restore($id)
+    {
+
+        $request = request();
+        $category = Category::withTrashed($id)
+            ->where('id', $id)
+            ->restore();
+        return new RedirectResponse('/category');
     }
 
     public function create()
@@ -69,7 +85,7 @@ class CategoryController
             'title' => [
                 'required',
                 'min:3',
-                Rule::unique('categories','title')->ignore($category->id)
+                Rule::unique('categories', 'title')->ignore($category->id)
             ],
             'slug' => [
                 'required',
@@ -94,4 +110,12 @@ class CategoryController
         $category->delete();
         return new RedirectResponse('/category');
     }
+    public function forceDelete($id)
+    {
+        $category = Category::withTrashed($id)
+            ->where('id', $id)
+            ->forceDelete();
+        return new RedirectResponse('/tag');
+    }
+
 }

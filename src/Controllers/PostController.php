@@ -16,10 +16,26 @@ class PostController
         return view('pages/posts/list-posts', compact('posts'));
     }
 
+    public function trash()
+    {
+        $posts = Post::onlyTrashed()->get();
+        return view('pages/posts/trash', compact('posts'));
+    }
+
     public function show($id)
     {
         $post = Post::find($id);
         return view('pages/posts/show', compact('post'));
+    }
+
+    public function restore($id)
+    {
+
+        $request = request();
+        $post = Post::withTrashed($id)
+            ->where('id', $id)
+            ->restore();
+        return new RedirectResponse('/post');
     }
 
     public function create()
@@ -105,5 +121,13 @@ class PostController
         $post->tags()->detach();
         $post->delete();
         return new RedirectResponse('/post');
+    }
+
+    public function forceDelete($id)
+    {
+        $post = Post::withTrashed($id)
+            ->where('id', $id)
+            ->forceDelete();
+        return new RedirectResponse('/tag');
     }
 }
