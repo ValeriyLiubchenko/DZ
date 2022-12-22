@@ -6,7 +6,7 @@
         <li>
             Slug: {{ $category->slug }}
             created: {{ $category->created_at }}
-            updated: {{ $category->update_at }}
+            updated: {{ $category->updated_at }}
         </li>
     </ul>
 @endsection()

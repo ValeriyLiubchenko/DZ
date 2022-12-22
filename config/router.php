@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Hillel\Controllers\PageController;
 use Hillel\Controllers\CategoryController;
 use Hillel\Controllers\TagController;
+use Hillel\Controllers\PostController;
 
 $request = Request::createFromGlobals();
 
@@ -41,3 +42,11 @@ $router->post('/tag/store', [TagController::class, 'store']);
 $router->get('/tag/{id}/edit', [TagController::class, 'edit']);
 $router->post('/tag/update', [TagController::class, 'update']);
 $router->get('/tag/{id}/delete', [TagController::class, 'destroy']);
+
+$router->get('/post', [PostController::class, 'index']);
+$router->get('/post/{id}/show', [PostController::class, 'show']);
+$router->get('/post/create', [PostController::class, 'create']);
+$router->post('/post/store', [PostController::class, 'store']);
+$router->get('/post/{id}/edit', [PostController::class, 'edit']);
+$router->post('/post/update', [PostController::class, 'update']);
+$router->get('/post/{id}/delete', [PostController::class, 'destroy']);

@@ -7,6 +7,9 @@
         [
 'link'=>'/category',
 'name'=>'Categories list',
+        ], [
+'link'=>'/post',
+'name'=>'Posts list',
         ],[
 'link'=>'/tag',
 'name'=>'Tags list',

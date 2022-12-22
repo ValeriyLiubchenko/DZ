@@ -6,7 +6,7 @@
         <li>
             Slug: {{ $tag->slug }}
             created: {{ $tag->created_at }}
-            updated: {{ $tag->update_at }}
+            updated: {{ $tag->updated_at }}
         </li>
     </ul>
 @endsection()

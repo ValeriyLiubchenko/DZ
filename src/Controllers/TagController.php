@@ -2,8 +2,11 @@
 
 namespace Hillel\Controllers;
 
+use Hillel\Models\Category;
+use Hillel\Models\Post;
 use Hillel\Models\Tag;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Validation\Rule;
 
 class TagController
 {
@@ -23,17 +26,31 @@ class TagController
     public function create()
     {
         $tag = new Tag();
-        return view('pages/tags/create-tag');
+        $posts = Post::all();
+        return view('pages/tags/create-tag', compact('tag','posts'));
 
     }
 
     public function store()
     {
-        $request = request();
+
+        $data = request()->all();
+
+        $validator = validator()->make($data, [
+            'title' => ['required', 'min:3', 'unique:tags,title'],
+            'slug' => ['required', 'min:3'],
+        ]);
+        if ($validator->fails()) {
+            $_SESSION['errors'] = $validator->errors()->toArray();
+            $_SESSION['data'] = $data;
+            return new RedirectResponse($_SERVER['HTTP_REFERER']);
+        }
         $tag = new Tag();
-        $tag->title = $request->input('title');
-        $tag->slug = $request->input('slug');
+        $tag->title = $data['title'];
+        $tag->slug = $data['slug'];
         $tag->save();
+
+        $_SESSION['success'] = 'Запис успішно створено';
         return new RedirectResponse('/tag');
     }
 
@@ -45,11 +62,30 @@ class TagController
 
     public function update()
     {
-        $request = request();
-        $tag = Tag::find($request->input('id'));
-        $tag->title = $request->input('title');
-        $tag->slug = $request->input('slug');
+
+        $data = request()->all();
+        $tag = Tag::find($data['id']);
+        $tag->title = $data['title'];
+        $tag->slug = $data['slug'];
+
+        $validator = validator()->make($data, [
+            'title' => [
+                'required',
+                'min:3',
+                Rule::unique('tags','title')->ignore($tag->id)
+            ],
+            'slug' => [
+                'required',
+                'min:3']
+        ]);
+        if ($validator->fails()) {
+            $_SESSION['errors'] = $validator->errors()->toArray();
+            $_SESSION['data'] = $data;
+            return new RedirectResponse($_SERVER['HTTP_REFERER']);
+        }
+
         $tag->save();
+        $_SESSION['success'] = 'Запис успішно оновлено';
         return new RedirectResponse('/tag');
     }
 
