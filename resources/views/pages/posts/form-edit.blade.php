@@ -59,11 +59,11 @@
             <label for="tags" class="form-label">Tags</label>
             <select name="tags[]" id="tags" multiple>
                 @foreach($tags as $tag)
-                    <option value="{{$tag->id}}">{{$tag->title}}</option>
+                    <option selected value="{{$tag->id}}">{{$tag->title}}</option selected>
                 @endforeach
             </select>
-            @isset($_SESSION['errors']['category_id'])
-                @foreach($_SESSION['errors']['category_id'] as $error)
+            @isset($_SESSION['errors']['tags'])
+                @foreach($_SESSION['errors']['tags'] as $error)
                     <div class=" alert alert-danger" role="alert">
                         {{$error}}
                     </div>
